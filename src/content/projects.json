@@ -1,0 +1,133 @@
+[
+  {
+    "id": "multi-agent-lead-enrichment",
+    "title": "Financial Document Processing Pipeline",
+    "tagline": "Automates invoice processing with Google Drive detection, AI data extraction, automated validation, and team alerts.",
+    "category": "WORKFLOW AUTOMATION",
+    "tags": [
+      "n8n",
+      "Google Drive",
+      "Google Sheets",
+      "Gemini",
+      "Slack"
+    ],
+    "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "videoDemo": "https://player.vimeo.com/video/1213603546?title=0&byline=0&portrait=0&badge=0&autopause=0&dnt=1",
+    "overview": "This workflow automates invoice processing by detecting new uploads in Google Drive, validating files, preventing duplicate entries, extracting invoice data with AI, verifying confidence levels, routing uncertain invoices for manual approval, recording validated data in Google Sheets, organizing processed files, and notifying the team through Slack.",
+    "challenge": "Manual invoice processing is slow and error-prone, leaving finance teams vulnerable to duplicate payments, corrupted files, and costly data entry mistakes.",
+    "solution": "This automated pipeline delivers a resilient, hands-free payables engine that verifies document integrity and extracts high-accuracy financial data. By combining AI precision with human-in-the-loop validation for edge cases, it guarantees 100% data reliability without operational bottlenecks.",
+    "results": "Saved 12 hours/week on manual data entry, eliminated duplicate and invalid invoice submissions, reduced document processing time from days to seconds, and achieved a 99%+ automated data extraction accuracy rate with fail-safe human review.",
+    "tools": [
+      "n8n",
+      "Google Drive",
+      "Google Sheets",
+      "Gemini",
+      "Slack"
+    ],
+    "liveUrl": "https://n8n.io",
+    "featured": true,
+    "date": "2024-05"
+  },
+  {
+    "id": "ai-voice-customer-agent",
+    "title": "AI Voice Booking Dispatcher",
+    "tagline": "A high-fidelity conversational phone agent that books calendar slots and triages urgent support.",
+    "category": "AI Agents",
+    "tags": [
+      "Make.com",
+      "Vapi AI",
+      "GPT-4o",
+      "Notion"
+    ],
+    "thumbnail": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "videoDemo": "https://player.vimeo.com/video/1212693671?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+    "overview": "A fully responsive real-time voice receptionist that speaks with human-like latency, queries a live database of open spots, registers the customer, and schedules appointments, updating CRM systems instantly.",
+    "challenge": "An HVAC servicing business missed roughly 30% of incoming customer calls outside business hours, leading to missed emergency service revenue of an estimated $8,500 monthly.",
+    "solution": "Deployed a conversational voice agent using Vapi AI, connected via webhooks to a custom Make.com workflow. The voice agent handles incoming calls 24/7, responds under 800ms, parses emergency vs regular requests, checks Calendly/Google Calendar for open times, books appointments, and logs all call summaries and action items in Notion.",
+    "results": "Captured 100% of out-of-hours emergency calls, booking 42 appointments in its first month and reclaiming $9,800 in service revenue.",
+    "tools": [
+      "Make.com",
+      "Vapi AI",
+      "GPT-4o",
+      "Calendly",
+      "Notion"
+    ],
+    "liveUrl": "https://vapi.ai",
+    "featured": true,
+    "date": "2024-06"
+  },
+  {
+    "id": "linkedin-content-system",
+    "title": "AI-Powered Thought Leadership System",
+    "tagline": "RSS-driven curation, AI brand-voice writer, and automated scheduling queue.",
+    "category": "WORKFLOW AUTOMATION",
+    "tags": [
+      "Zapier",
+      "Airtable",
+      "Claude AI",
+      "Buffer"
+    ],
+    "thumbnail": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "videoDemo": "https://player.vimeo.com/video/1212693671?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479",
+    "overview": "An automated content production pipeline that collects tech articles from RSS feeds, drafts highly contextual posts matching the owner's tone, manages an Airtable approval dashboard, and publishes them.",
+    "challenge": "Creating high-quality content for LinkedIn was crucial for Von's brand, but researching articles, drafting engaging posts, and formatting took 8+ hours per week, causing inconsistent publishing.",
+    "solution": "Designed a content engine. Feedbin aggregates top tech RSS feeds and sends new articles to Zapier. Claude AI extracts key takeaways and drafts three LinkedIn posts using Von's specific brand guidelines. These drafts are loaded into Airtable where Von can review, adjust with a slider, and check a box to instantly cue it into Buffer for automatic publishing.",
+    "results": "Maintained a daily posting schedule with only 15 minutes of review time per week, growing Von's LinkedIn impressions by 210% in 60 days.",
+    "tools": [
+      "Zapier",
+      "Airtable",
+      "Claude AI",
+      "Buffer",
+      "RSS Feeds"
+    ],
+    "liveUrl": "https://zapier.com",
+    "featured": false,
+    "date": "2024-03"
+  },
+  {
+    "id": "customer-triage-rag-bot",
+    "title": "AI-Powered Lead Management System",
+    "tagline": "Automatically captures leads, analyzes lead quality, drafts AI-powered email responses, and generates daily lead activity reports.",
+    "category": "WORKFLOW AUTOMATION",
+    "tags": [
+      "JotForm",
+      "Zapier",
+      "Google Sheets",
+      "Gmail",
+      "Slack",
+      "Google Drive"
+    ],
+    "thumbnail": "https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&w=800&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "overview": "This workflow in Zapier automates end-of-day sales reporting by collecting daily lead activity, calculating key sales metrics, generating an AI-powered performance summary, recording the results, and delivering a formatted report to the team through Slack.",
+    "challenge": "An e-commerce retailer faced a massive backlog of repeated customer support queries (e.g., returns, shipping, sizing), causing wait times to spike to 24+ hours.",
+    "solution": "Set up an n8n workflow connected to the support inbox. When an email arrives, its text is converted into vector embeddings and queried against a Pinecone vector index loaded with store policies. GPT-4o uses this context to draft a helpful, highly accurate reply in drafts. If the query requires human resolution, it's flagged as 'High Priority' and logged in Supabase.",
+    "results": "Automated 65% of common queries with 100% accuracy, dropping average first-response times from 24 hours to under 5 minutes.",
+    "tools": [
+      "JotForm",
+      "Zapier",
+      "Google Sheets",
+      "Gmail",
+      "Slack",
+      "Google Drive"
+    ],
+    "liveUrl": "https://n8n.io",
+    "featured": true,
+    "date": "2024-04"
+  }
+]

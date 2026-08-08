@@ -1,0 +1,6 @@
+{
+  "name": "Von's AI Automation Portfolio",
+  "description": "Premium personal portfolio showcasing high-impact AI automation and agentic workflow integrations, with a custom-built Gemini AI Assistant chat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

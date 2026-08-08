@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --aurora-bg: #050810;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --card-title: #ffffff;
+  --glass-bg: rgba(10, 16, 32, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.37);
+  --glass-nav: rgba(5, 8, 16, 0.7);
+  --glass-nav-border: rgba(255, 255, 255, 0.06);
+  --input-bg: rgba(255, 255, 255, 0.02);
+  --input-border: rgba(255, 255, 255, 0.05);
+  --glow-1-start: rgba(0, 255, 209, 0.12);
+  --glow-1-end: rgba(0, 255, 209, 0);
+  --glow-2-start: rgba(155, 93, 229, 0.12);
+  --glow-2-end: rgba(155, 93, 229, 0);
+  --glow-3-start: rgba(247, 37, 133, 0.08);
+  --glow-3-end: rgba(247, 37, 133, 0);
+  --glow-hover: rgba(0, 255, 209, 0.25);
+  --glow-hover-shadow: rgba(0, 255, 209, 0.1);
+  --scroll-track: #050810;
+  --scroll-thumb: rgba(255, 255, 255, 0.1);
+  --aurora-teal-color: #00FFD1;
+  --aurora-violet-color: #9B5DE5;
+  --aurora-magenta-color: #F72585;
+  --aurora-blue-color: #4361EE;
+  --color-chatgpt: #ffffff;
+}
+
+:root.light {
+  --aurora-bg: #eef2f6;
+  --text-main: #1e293b;
+  --text-muted: #475569;
+  --card-title: #0f172a;
+  --glass-bg: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(15, 23, 42, 0.09);
+  --glass-shadow: rgba(15, 23, 42, 0.05);
+  --glass-nav: rgba(238, 242, 246, 0.85);
+  --glass-nav-border: rgba(15, 23, 42, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.95);
+  --input-border: rgba(15, 23, 42, 0.12);
+  --glow-1-start: rgba(13, 148, 136, 0.25);
+  --glow-1-end: rgba(13, 148, 136, 0);
+  --glow-2-start: rgba(124, 58, 237, 0.22);
+  --glow-2-end: rgba(124, 58, 237, 0);
+  --glow-3-start: rgba(219, 39, 119, 0.18);
+  --glow-3-end: rgba(219, 39, 119, 0);
+  --glow-hover: rgba(13, 148, 136, 0.35);
+  --glow-hover-shadow: rgba(13, 148, 136, 0.12);
+  --scroll-track: #eef2f6;
+  --scroll-thumb: rgba(15, 23, 42, 0.15);
+  --aurora-teal-color: #0d9488;
+  --aurora-violet-color: #7c3aed;
+  --aurora-magenta-color: #db2777;
+  --aurora-blue-color: #2563eb;
+  --color-chatgpt: #0f172a;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-aurora-teal: var(--aurora-teal-color);
+  --color-aurora-violet: var(--aurora-violet-color);
+  --color-aurora-magenta: var(--aurora-magenta-color);
+  --color-aurora-blue: var(--aurora-blue-color);
+  --color-aurora-bg: var(--aurora-bg);
+
+  --color-theme-text: var(--text-main);
+  --color-theme-muted: var(--text-muted);
+  --color-theme-title: var(--card-title);
+  --color-theme-border: var(--glass-border);
+  --color-theme-input: var(--input-bg);
+  --color-theme-input-border: var(--input-border);
+}
+
+/* Webkit Autofill Custom Theme Fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #0a1020 inset !important;
+  -webkit-text-fill-color: #e2e8f0 !important;
+  caret-color: #e2e8f0 !important;
+  transition: background-color 50000s ease-in-out 0s;
+}
+
+:root.light input:-webkit-autofill,
+:root.light input:-webkit-autofill:hover,
+:root.light input:-webkit-autofill:focus,
+:root.light textarea:-webkit-autofill,
+:root.light textarea:-webkit-autofill:hover,
+:root.light textarea:-webkit-autofill:focus,
+:root.light select:-webkit-autofill,
+:root.light select:-webkit-autofill:hover,
+:root.light select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #0f172a !important;
+  caret-color: #0f172a !important;
+}
+
+@layer base {
+  body {
+    background-color: var(--aurora-bg);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Custom Glassmorphism Primitives */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel-hover:hover {
+  border: 1px solid var(--glow-hover);
+  box-shadow: 0 8px 32px 0 var(--glow-hover-shadow);
+}
+
+.glass-nav {
+  background: var(--glass-nav);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-nav-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* Subtle Aurora Animated Mesh Background */
+.aurora-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  overflow: hidden;
+  background-color: var(--aurora-bg);
+  transition: background-color 0.3s ease;
+}
+
+.aurora-glow-1 {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--glow-1-start) 0%, var(--glow-1-end) 70%);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  top: -10%;
+  right: -5%;
+  filter: blur(80px);
+  animation: liquid-glow 28s infinite ease-in-out;
+}
+
+.aurora-glow-2 {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, var(--glow-2-start) 0%, var(--glow-2-end) 70%);
+  border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+  bottom: -15%;
+  left: -10%;
+  filter: blur(100px);
+  animation: liquid-glow 38s infinite reverse ease-in-out;
+}
+
+.aurora-glow-3 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--glow-3-start) 0%, var(--glow-3-end) 70%);
+  border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%;
+  top: 40%;
+  left: 30%;
+  filter: blur(90px);
+  animation: liquid-glow 32s infinite ease-in-out;
+}
+
+@keyframes liquid-glow {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+  33% {
+    transform: translate(40px, -45px) rotate(120deg) scale(1.1);
+    border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%;
+  }
+  66% {
+    transform: translate(-35px, 45px) rotate(240deg) scale(0.92);
+    border-radius: 30% 70% 40% 60% / 50% 60% 40% 50%;
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(360deg) scale(1);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 45s linear infinite reverse;
+}
+
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* Shiny Hover Sweep Effect */
+.hover-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 30%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.13) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.hover-sweep:hover::after {
+  left: 140%;
+  opacity: 1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 209, 0.3);
+}
+
+/* Premium Light Mode Class Overrides */
+:root.light .text-white,
+:root.light .text-slate-100,
+:root.light h1.text-white,
+:root.light h2.text-white,
+:root.light h3.text-white,
+:root.light h4.text-white,
+:root.light .font-display {
+  color: var(--card-title) !important;
+}
+
+:root.light .text-slate-200,
+:root.light .text-slate-300 {
+  color: var(--text-main) !important;
+}
+
+:root.light .text-slate-400 {
+  color: var(--text-muted) !important;
+}
+
+:root.light .text-slate-500 {
+  color: #64748b !important;
+}
+
+:root.light .hover\:text-white:hover {
+  color: var(--card-title) !important;
+}
+
+:root.light .bg-slate-950\/40 {
+  background-color: rgba(241, 245, 249, 0.6) !important;
+}
+
+:root.light .bg-slate-900 {
+  background-color: #f1f5f9 !important;
+}
+
+:root.light .bg-white\/\[0\.02\] {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+}
+
+:root.light .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+:root.light .bg-white\/\[0\.01\] {
+  background-color: rgba(15, 23, 42, 0.015) !important;
+}
+
+:root.light .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+:root.light .border-white\/5 {
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+:root.light input,
+:root.light select,
+:root.light textarea {
+  color: var(--card-title) !important;
+  background-color: rgba(15, 23, 42, 0.02) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+:root.light input::placeholder,
+:root.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Chat bubble & other component overrides */
+:root.light .bg-white\/\[0\.03\] {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+}
+
+:root.light #ai-chat-bubble-panel {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.1) !important;
+}
+
+/* Force high contrast text on gradient buttons and badges in light mode */
+:root.light .text-slate-950 {
+  color: #ffffff !important;
+}
+
+:root.light .bg-gradient-to-r,
+:root.light .bg-gradient-to-tr,
+:root.light .bg-aurora-teal,
+:root.light button.bg-aurora-teal,
+:root.light [class*="from-aurora"] {
+  /* Ensure children of gradient buttons that have text-slate-950 are white */
+}
+
+
+/* Project Modal & Project Card Light Mode Fixes */
+:root.light .bg-\[\#050810\]\/95 {
+  background-color: rgba(238, 242, 246, 0.95) !important;
+}
+:root.light .bg-slate-950\/80 {
+  background-color: rgba(241, 245, 249, 0.9) !important;
+}
+:root.light .bg-aurora-bg\/80 {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+:root.light .bg-aurora-bg\/85 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+:root.light .bg-black\/20 {
+  background-color: rgba(15, 23, 42, 0.1) !important;
+}
+:root.light .bg-black\/40 {
+  background-color: rgba(15, 23, 42, 0.2) !important;
+}
+:root.light .bg-black\/50 {
+  background-color: rgba(15, 23, 42, 0.25) !important;
+}
+:root.light .bg-black\/80 {
+  background-color: rgba(15, 23, 42, 0.4) !important;
+}
+:root.light .bg-black\/90 {
+  background-color: rgba(15, 23, 42, 0.5) !important;
+}
+:root.light .border-white\/15 {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+:root.light .border-white\/20 {
+  border-color: rgba(15, 23, 42, 0.15) !important;
+}
+:root.light .border-white\/30 {
+  border-color: rgba(15, 23, 42, 0.2) !important;
+}
