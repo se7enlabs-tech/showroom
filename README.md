@@ -1,20 +1,48 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+<img src="src/assets/logo.png" alt="SE7ENLABS banner" width="100%" />
 </div>
 
-# Run and deploy your AI Studio app
+# SE7ENLABS — Automation Showroom
 
-This contains everything you need to run your app locally.
+A portfolio site for AI workflow engineering — custom automation systems built with n8n, Make.com, Zapier, and LLMs. Includes a real-time AI assistant, project showcase, and booking integration.
 
-View your app in AI Studio: https://ai.studio/apps/8bec4c45-0c07-405e-8311-a6b4b29f5dcb
+## Features
 
-## Run Locally
+- **Automation Showroom** — filterable project portfolio with full case-study modals
+- **AI Assistant** — Gemini-powered chatbot grounded on Von's knowledge base, with form and scheduling actions
+- **Contact** — validated contact form (Resend + Make.com webhook)
+- **Live Scheduling** — embedded Cal.com unless directly accessible
+- **Design** — aurora glassmorphism UI, smooth scrolling (Lenis), light/dark theme
 
-**Prerequisites:**  Node.js
+## Stack
 
+React + TypeScript + Vite · Tailwind CSS · Motion · Express · Gemini · Resend
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Getting Started
+
+**Prerequisites:** Node.js (v18+) and npm or bun
+
+```bash
+npm install
+npm run dev
+```
+
+Open http://localhost:3000
+
+## Environment Variables
+
+Copy `.env.example` to `.env.local` and fill in the values used by the server. `GEMINI_API_KEY` is only needed for live AI chat replies — everything else degrades gracefully without it.
+
+- `GEMINI_API_KEY` — Gemini key for the AI assistant
+- `RESEND_API_KEY` / `RESEND_TO_EMAIL` — outgoing email for contact form + AI
+- `CAL_API_KEY` / `CAL_EVENT_LINK` — Cal.com scheduling
+- `MAKE_WEBHOOK_URL` / `MAKE_API_KEY` — Make.com webhook triggers
+
+## Commands
+
+```bash
+npm run dev     # dev server (tsx server.ts)
+npm run build   # production build
+npm run start   # run the production build
+npm run lint    # type-check (tsc --noEmit)
+```
