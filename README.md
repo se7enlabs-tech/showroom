@@ -27,8 +27,6 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000
-
 ## Environment Variables
 
 Copy `.env.example` to `.env.local` and fill in the values used by the server. `GEMINI_API_KEY` is only needed for live AI chat replies — everything else degrades gracefully without it.
