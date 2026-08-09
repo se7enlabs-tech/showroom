@@ -73,6 +73,9 @@ export function ChatProvider({ children }: { children: ReactNode }) {
     }
     setIsLoading(true);
 
+    let assistantId: string | null = null;
+    const timestamp = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -85,32 +88,73 @@ export function ChatProvider({ children }: { children: ReactNode }) {
         }),
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
-        throw new Error(data.error || "Failed to retrieve response.");
+        let errorMessage = "Failed to retrieve response.";
+        try {
+          const data = await response.json();
+          errorMessage = data.error || errorMessage;
+        } catch {
+          // ignore parse failure, fall back to default message
+        }
+        throw new Error(errorMessage);
       }
 
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: Math.random().toString(36).substring(7),
-          role: "model",
-          content: data.text || "I was unable to retrieve a response from the model. Please try again.",
-          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        },
-      ]);
+      // Add an empty assistant bubble immediately so the reply streams in visibly.
+      assistantId = Math.random().toString(36).substring(7);
+      setMessages((prev) => [...prev, { id: assistantId as string, role: "model", content: "", timestamp }]);
+      setIsLoading(false);
+
+      if (!response.body) {
+        const fullText = await response.text();
+        setMessages((prev) =>
+          prev.map((m) => (m.id === assistantId ? { ...m, content: fullText } : m))
+        );
+        return;
+      }
+
+      // Stream tokens from the server incrementally.
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let content = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        content += decoder.decode(value, { stream: true });
+        const snapshot = content;
+        setMessages((prev) =>
+          prev.map((m) => (m.id === assistantId ? { ...m, content: snapshot } : m))
+        );
+      }
+
+      if (!content.trim()) {
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === assistantId
+              ? { ...m, content: "I was unable to retrieve a response from the model. Please try again." }
+              : m
+          )
+        );
+      }
     } catch (error: any) {
       console.error("Failed to fetch chat response:", error);
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: Math.random().toString(36).substring(7),
-          role: "model",
-          content: error.message || "Oops! I encountered an off-grid connection issue. Von's server is still live but my AI core is currently cycling. Try checking back in 10 seconds or drop Von a direct note on the contact form!",
-          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        },
-      ]);
+      const errorContent =
+        error.message ||
+        "Oops! I encountered an off-grid connection issue. Von's server is still live but my AI core is currently cycling. Try checking back in 10 seconds or drop Von a direct note on the contact form!";
+      if (assistantId) {
+        setMessages((prev) =>
+          prev.map((m) => (m.id === assistantId ? { ...m, content: errorContent } : m))
+        );
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: Math.random().toString(36).substring(7),
+            role: "model",
+            content: errorContent,
+            timestamp,
+          },
+        ]);
+      }
     } finally {
       setIsLoading(false);
       setHasUnread(!isOpen);
