@@ -137,6 +137,14 @@ select:-webkit-autofill:focus {
   }
 }
 
+/* Stop scroll chaining from the Cal.com embed: when the iframe content is
+   scrolled to its edge, the wheel event no longer leaks into the parent page
+   (which Lenis smooth-scrolls), eliminating the jitter inside the calendar.
+   Page-wide smooth scrolling is unaffected. */
+[data-cal-embed] iframe {
+  overscroll-behavior: contain;
+}
+
 .glass-nav {
   background: var(--glass-nav);
   backdrop-filter: blur(16px);

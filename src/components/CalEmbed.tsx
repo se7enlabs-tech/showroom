@@ -22,7 +22,14 @@ export default function CalEmbed({ theme }: { theme: "dark" | "light" }) {
       key={theme}
       namespace="discovery"
       calLink="se7enlabs/discovery"
-      style={{ width: "100%", height: "100%", overflow: "scroll" }}
+      data-cal-embed="discovery"
+      data-lenis-prevent="true"
+      style={{
+        width: "100%",
+        height: "100%",
+        overflow: "hidden",
+        overscrollBehavior: "contain",
+      }}
       config={{ layout: "column_view", useSlotsViewOnSmallScreen: "true", theme }}
     />
   );

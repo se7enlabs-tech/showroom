@@ -438,7 +438,7 @@ export default function ChatPanel({ theme = "dark", showCloseButton = false, onC
                 <X className="w-4 h-4" />
               </button>
             </div>
-            <div className="flex-grow w-full bg-transparent overflow-hidden rounded-b-[24px]">
+            <div className="flex-grow w-full bg-transparent overflow-hidden overscroll-contain rounded-b-[24px]">
               <CalEmbed theme={theme} />
             </div>
           </motion.div>
