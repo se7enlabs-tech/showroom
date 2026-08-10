@@ -198,7 +198,7 @@ export default function ProjectModal({ project, theme = "dark", onClose }: Proje
 
                         {/* Challenge & Solution Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <div className="glass-panel p-5 sm:p-6 rounded-[24px] flex flex-col">
+                          <div className="glass-panel p-5 sm:p-6 rounded-[24px] bg-white/[0.02] flex flex-col">
                             <div className="flex items-center gap-2 mb-3 text-aurora-magenta shrink-0">
                               <Flame className="w-5 h-5" />
                               <h5 className="font-display font-bold text-sm uppercase tracking-wide">The Challenge</h5>
@@ -208,7 +208,7 @@ export default function ProjectModal({ project, theme = "dark", onClose }: Proje
                             </p>
                           </div>
 
-                          <div className="glass-panel p-5 sm:p-6 rounded-[24px] border-aurora-teal/10 flex flex-col">
+                          <div className="glass-panel p-5 sm:p-6 rounded-[24px] bg-white/[0.02] border-aurora-teal/10 flex flex-col">
                             <div className="flex items-center gap-2 mb-3 text-aurora-teal shrink-0">
                               <Hammer className="w-5 h-5" />
                               <h5 className="font-display font-bold text-sm uppercase tracking-wide">The Solution</h5>
@@ -220,7 +220,7 @@ export default function ProjectModal({ project, theme = "dark", onClose }: Proje
                         </div>
 
                         {/* Outcomes */}
-                        <div className="glass-panel p-5 sm:p-6 rounded-[24px] border border-aurora-teal/20 flex flex-col">
+                        <div className="glass-panel p-5 sm:p-6 rounded-[24px] bg-aurora-teal/5 border border-aurora-teal/20 flex flex-col">
                           <div className="flex items-center gap-2 mb-3 text-aurora-teal shrink-0">
                             <Trophy className="w-5 h-5" />
                             <h5 className="font-display font-bold text-sm uppercase tracking-wide">Project Outcomes</h5>
@@ -233,7 +233,7 @@ export default function ProjectModal({ project, theme = "dark", onClose }: Proje
 
                       {/* Sidebar Column (Right) */}
                       <div className="md:col-span-1">
-                        <div className="glass-panel p-6 sm:p-8 rounded-[32px] md:sticky top-8">
+                        <div className="glass-panel p-6 sm:p-8 rounded-[32px] bg-white/[0.01] md:sticky top-8">
                           <div className="space-y-8">
                             <div className="space-y-2">
                               <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest flex items-center gap-2 mb-3">
@@ -280,7 +280,7 @@ export default function ProjectModal({ project, theme = "dark", onClose }: Proje
                           </h3>
                         </div>
                         
-                        <div className="glass-panel rounded-[24px] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden">
+                        <div className="glass-panel rounded-[24px] bg-white/[0.02] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden">
                           {detail.id === "personal-ai-assistant" ? (
                             <div className="w-full relative bg-slate-950/80 min-h-[520px] flex flex-col items-center justify-center overflow-hidden">
                               <div className="absolute inset-0 bg-gradient-to-tr from-aurora-teal/10 via-transparent to-aurora-blue/5 opacity-50 pointer-events-none mix-blend-overlay z-0"></div>

@@ -628,7 +628,7 @@ export default function App() {
               </section>
 
               {/* 4. METRICS & COUNTERS */}
-              <section className="grid grid-cols-1 md:grid-cols-3 gap-6 glass-panel border-white/5 rounded-[28px] p-8 text-center relative overflow-hidden">
+              <section className="grid grid-cols-1 md:grid-cols-3 gap-6 bg-white/[0.01] border border-white/5 rounded-[28px] p-8 text-center relative overflow-hidden">
                 <div className="space-y-2">
                   <h4 className="font-display text-4xl md:text-5xl font-extrabold text-white">
                     {stats.automations}+
@@ -792,7 +792,7 @@ export default function App() {
 
                 {/* Status Badges */}
                 <div className="space-y-3">
-                  <div className="glass-panel p-4 rounded-2xl border-white/5 flex items-center justify-between text-xs font-mono">
+                  <div className="glass-panel p-4 rounded-2xl bg-white/[0.01] border-white/5 flex items-center justify-between text-xs font-mono">
                     <span className="text-slate-400">Availability</span>
                     {availability !== 'loading' && (
                       <span className={`${availability === 'available' ? 'text-emerald-400' : 'text-slate-400'} flex items-center gap-1.5`}>
@@ -895,7 +895,7 @@ export default function App() {
               {/* Right Column: Booking Widget */}
               <div className="h-full">
                 {/* Real Calendly Embedded Widget */}
-                <div className="glass-panel p-4 md:p-6 rounded-[24px] border-white/10 space-y-4 relative overflow-hidden h-full flex flex-col">
+                <div className="glass-panel p-4 md:p-6 rounded-[24px] bg-white/[0.01] border-white/10 space-y-4 relative overflow-hidden h-full flex flex-col">
                   <div className="flex items-center justify-between gap-3 flex-wrap">
                     <div className="flex items-center gap-3">
                       <div className="p-2.5 rounded-xl bg-aurora-teal/10 text-aurora-teal">

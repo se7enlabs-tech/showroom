@@ -32,7 +32,11 @@ export default function ChatBubble({ theme = "dark" }: { theme?: "dark" | "light
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 250, damping: 25 }}
             style={{ zIndex: 9999 }}
-            className="fixed bottom-20 right-4 left-4 sm:bottom-24 sm:right-6 sm:left-auto w-auto sm:w-[400px] h-[520px] max-h-[calc(100vh-120px)] rounded-[24px] glass-panel flex flex-col overflow-hidden"
+            className={`fixed bottom-20 right-4 left-4 sm:bottom-24 sm:right-6 sm:left-auto w-auto sm:w-[400px] h-[520px] max-h-[calc(100vh-120px)] rounded-[24px] glass-panel flex flex-col overflow-hidden ${
+              theme === "light"
+                ? "bg-white/95 border-slate-200/50 shadow-[0_0_40px_rgba(0,0,0,0.1)]"
+                : "bg-slate-950/95 border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)]"
+            }`}
           >
             <ChatPanel theme={theme} showCloseButton={true} onClose={() => setIsOpen(false)} />
           </motion.div>

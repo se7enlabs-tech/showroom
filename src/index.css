@@ -6,9 +6,9 @@
   --text-main: #e2e8f0;
   --text-muted: #94a3b8;
   --card-title: #ffffff;
-  --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.14);
-  --glass-shadow: rgba(0, 0, 0, 0.35);
+  --glass-bg: rgba(10, 16, 32, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.37);
   --glass-nav: rgba(5, 8, 16, 0.7);
   --glass-nav-border: rgba(255, 255, 255, 0.06);
   --input-bg: rgba(255, 255, 255, 0.02);
@@ -35,9 +35,9 @@
   --text-main: #1e293b;
   --text-muted: #475569;
   --card-title: #0f172a;
-  --glass-bg: rgba(255, 255, 255, 0.6);
-  --glass-border: rgba(15, 23, 42, 0.12);
-  --glass-shadow: rgba(15, 23, 42, 0.12);
+  --glass-bg: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(15, 23, 42, 0.09);
+  --glass-shadow: rgba(15, 23, 42, 0.05);
   --glass-nav: rgba(238, 242, 246, 0.85);
   --glass-nav-border: rgba(15, 23, 42, 0.08);
   --input-bg: rgba(255, 255, 255, 0.95);
@@ -123,58 +123,26 @@ select:-webkit-autofill:focus {
    can override these defaults, preventing unwanted transparency. */
 @layer components {
   .glass-panel {
-    position: relative;
     background: var(--glass-bg);
-    backdrop-filter: blur(30px) saturate(160%);
-    -webkit-backdrop-filter: blur(30px) saturate(160%);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border: 1px solid var(--glass-border);
-    box-shadow:
-      0 8px 32px var(--glass-shadow),
-      inset 0 1px 0 rgba(255, 255, 255, 0.35),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-      inset 1px 0 0 rgba(255, 255, 255, 0.12),
-      inset 0 0 24px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
     transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .glass-panel::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 12%;
-    right: 12%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-    pointer-events: none;
-  }
-
   .glass-panel-hover:hover {
-    border-color: var(--glow-hover);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow:
-      0 8px 40px 0 var(--glow-hover-shadow),
-      inset 0 1px 0 rgba(255, 255, 255, 0.45),
-      inset 0 0 24px rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glow-hover);
+    box-shadow: 0 8px 32px 0 var(--glow-hover-shadow);
   }
+}
 
-  /* Light theme glass tuning */
-  :root.light .glass-panel {
-    box-shadow:
-      0 8px 32px var(--glass-shadow),
-      inset 0 1px 0 rgba(255, 255, 255, 0.7),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.3),
-      inset 1px 0 0 rgba(255, 255, 255, 0.5),
-      inset 0 0 24px rgba(255, 255, 255, 0.35);
-  }
-
-  :root.light .glass-panel::before {
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
-  }
-
-  :root.light .glass-panel-hover:hover {
-    border-color: var(--glow-hover);
-    background: rgba(255, 255, 255, 0.75);
-  }
+/* Stop scroll chaining from the Cal.com embed: when the iframe content is
+   scrolled to its edge, the wheel event no longer leaks into the parent page
+   (which Lenis smooth-scrolls), eliminating the jitter inside the calendar.
+   Page-wide smooth scrolling is unaffected. */
+[data-cal-embed] iframe {
+  overscroll-behavior: contain;
 }
 
 .glass-nav {
