@@ -27,7 +27,8 @@ export default function CalEmbed({ theme }: { theme: "dark" | "light" }) {
       style={{
         width: "100%",
         height: "100%",
-        overflow: "hidden",
+        overflowX: "hidden",
+        overflowY: "auto",
         overscrollBehavior: "contain",
       }}
       config={{ layout: "column_view", useSlotsViewOnSmallScreen: "true", theme }}
