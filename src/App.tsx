@@ -330,7 +330,7 @@ export default function App() {
 
       {/* Global Navigation Header */}
       <div className="h-20 w-full relative z-50">
-        <nav className={`fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300 ${scrolled ? "shadow-[0_4px_20px_rgba(15,23,42,0.05)] bg-glass-bg/95" : ""}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300 ${scrolled ? "shadow-[0_4px_20px_rgba(15,23,42,0.15)]" : ""}`}>
           <div className={`max-w-6xl mx-auto px-6 flex items-center justify-between transition-all duration-300 ${scrolled ? "h-14" : "h-20"}`}>
           <motion.button
             onClick={() => setActiveTab("home")}

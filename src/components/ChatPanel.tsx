@@ -342,8 +342,8 @@ export default function ChatPanel({ theme = "dark", showCloseButton = false, onC
         onSubmit={handleSendMessage}
         className={`p-3 flex items-center gap-2 cursor-default flex-shrink-0 border-t ${
           theme === "light"
-            ? "bg-white/90 border-slate-200/50"
-            : "bg-slate-900/90 border-white/10"
+            ? "bg-white/40 border-slate-200/50"
+            : "bg-slate-900/40 border-white/10"
         }`}
       >
         <input
