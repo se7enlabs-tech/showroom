@@ -118,29 +118,29 @@ select:-webkit-autofill:focus {
   }
 }
 
-/* Custom Glassmorphism Primitives */
-/* Kept inside @layer components so Tailwind utilities (bg-*, border-*, shadow-*)
-   can override these defaults, preventing unwanted transparency. */
-@layer components {
-  .glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 12px 36px var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  }
+/* Custom Glassmorphism Primitives for Tailwind v4 */
+@utility glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 12px 36px var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transform: translateZ(0);
+}
 
-  .glass-surface {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 6px 20px var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  }
+@utility glass-surface {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 6px 20px var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transform: translateZ(0);
+}
 
-  .glass-panel-hover:hover {
+@utility glass-panel-hover {
+  &:hover {
     border-color: var(--glow-hover);
     box-shadow: 0 12px 36px var(--glow-hover-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
@@ -154,12 +154,13 @@ select:-webkit-autofill:focus {
   overscroll-behavior: contain;
 }
 
-.glass-nav {
+@utility glass-nav {
   background: var(--glass-nav);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--glass-nav-border);
   transition: background 0.3s ease, border-color 0.3s ease;
+  transform: translateZ(0);
 }
 
 /* Subtle Aurora Animated Mesh Background */
