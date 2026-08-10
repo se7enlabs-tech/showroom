@@ -3,7 +3,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import app from "./app";
 
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
 // Setup Vite Dev server or serve static dist
 async function startServer() {
@@ -23,7 +23,7 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "127.0.0.1", () => {
+  app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });
 }
