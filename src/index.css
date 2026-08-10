@@ -6,7 +6,7 @@
   --text-main: #e2e8f0;
   --text-muted: #94a3b8;
   --card-title: #ffffff;
-  --glass-bg: rgba(10, 16, 32, 0.45);
+  --glass-bg: rgba(10, 16, 32, 0.78);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-shadow: rgba(0, 0, 0, 0.37);
   --glass-nav: rgba(5, 8, 16, 0.7);
@@ -119,18 +119,22 @@ select:-webkit-autofill:focus {
 }
 
 /* Custom Glassmorphism Primitives */
-.glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px 0 var(--glass-shadow);
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
+/* Kept inside @layer components so Tailwind utilities (bg-*, border-*, shadow-*)
+   can override these defaults, preventing unwanted transparency. */
+@layer components {
+  .glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 var(--glass-shadow);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
 
-.glass-panel-hover:hover {
-  border: 1px solid var(--glow-hover);
-  box-shadow: 0 8px 32px 0 var(--glow-hover-shadow);
+  .glass-panel-hover:hover {
+    border: 1px solid var(--glow-hover);
+    box-shadow: 0 8px 32px 0 var(--glow-hover-shadow);
+  }
 }
 
 .glass-nav {

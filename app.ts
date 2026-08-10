@@ -189,10 +189,11 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
 
   try {
     let emailSent = false;
-    let emailError = null;
+    let emailError: unknown = null;
+    const deliveryErrors: string[] = [];
 
     // 1. Send via Resend if RESEND_API_KEY is available
-    if (process.env.RESEND_API_KEY) {
+    if (process.env.RESEND_API_KEY && process.env.RESEND_TO_EMAIL) {
       try {
         const toEmail = process.env.RESEND_TO_EMAIL;
         const resend = new Resend(process.env.RESEND_API_KEY);
@@ -217,15 +218,17 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
         if (error) {
           console.error("Resend API Error:", error);
           emailError = error;
+          deliveryErrors.push("email");
         } else {
           emailSent = true;
         }
       } catch (err) {
         console.error("Error executing Resend API:", err);
         emailError = err;
+        deliveryErrors.push("email");
       }
     } else {
-      console.warn("RESEND_API_KEY not configured in environment.");
+      console.warn("Resend delivery is not configured in environment.");
     }
 
     // 2. Trigger Make.com Webhook
@@ -259,15 +262,23 @@ app.post("/api/contact", contactLimiter, async (req, res) => {
           console.log("Successfully delivered contact form submission to Make.com Webhook.");
         } else {
           console.error("Make.com Webhook responded with HTTP status:", makeResponse.status);
+          deliveryErrors.push("Make.com");
         }
       } catch (webhookErr) {
         console.error("Error sending to Make.com Webhook:", webhookErr);
+        deliveryErrors.push("Make.com");
       }
     }
 
-    // If neither service is configured or succeeded, but input is valid, respond with status details
-    if (!emailSent && !makeWebhookTriggered && emailError) {
-      return res.status(500).json({ error: "Failed to process message delivery. Please try again later." });
+    // Do not show a false success state when Vercel has no configured delivery
+    // service or when all configured services fail.
+    if (!emailSent && !makeWebhookTriggered) {
+      if (!process.env.RESEND_API_KEY && !makeWebhookUrl) {
+        console.error("No contact delivery integration is configured.");
+        return res.status(503).json({ error: "Contact delivery is not configured. Please try again later." });
+      }
+      console.error("All contact delivery integrations failed:", deliveryErrors, emailError);
+      return res.status(502).json({ error: "Failed to deliver your message. Please try again later." });
     }
 
     return res.json({
