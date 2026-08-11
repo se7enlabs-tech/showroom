@@ -377,9 +377,9 @@ export default function ChatPanel({ theme = "dark", showCloseButton = false, onC
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className={`absolute inset-0 z-50 flex flex-col ${theme === "light" ? "bg-white" : "bg-slate-950"}`}
+            className={`absolute inset-0 z-50 isolate flex min-h-0 flex-col ${theme === "light" ? "bg-white" : "bg-slate-950"}`}
           >
-            <div className={`flex items-center justify-between p-4 border-b ${theme === "light" ? "border-slate-200" : "border-white/10"}`}>
+            <div className={`relative z-[60] flex flex-shrink-0 items-center justify-between p-4 border-b ${theme === "light" ? "border-slate-200 bg-white" : "border-white/10 bg-slate-950"}`}>
               <h3 className={`font-bold flex items-center gap-2 ${theme === "light" ? "text-slate-900" : "text-white"}`}>
                 <Mail className="w-4 h-4 text-aurora-teal" /> Contact Von
               </h3>
@@ -428,9 +428,9 @@ export default function ChatPanel({ theme = "dark", showCloseButton = false, onC
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className={`absolute inset-0 z-50 flex flex-col ${theme === "light" ? "bg-white" : "bg-slate-950"}`}
+            className={`absolute inset-0 z-50 isolate flex min-h-0 flex-col ${theme === "light" ? "bg-white" : "bg-slate-950"}`}
           >
-            <div className={`flex items-center justify-between p-4 border-b ${theme === "light" ? "border-slate-200" : "border-white/10"}`}>
+            <div className={`relative z-[60] flex flex-shrink-0 items-center justify-between p-4 border-b ${theme === "light" ? "border-slate-200 bg-white" : "border-white/10 bg-slate-950"}`}>
               <h3 className={`font-bold flex items-center gap-2 ${theme === "light" ? "text-slate-900" : "text-white"}`}>
                 <Calendar className="w-4 h-4 text-aurora-teal" /> Book Discovery Call
               </h3>
@@ -438,8 +438,13 @@ export default function ChatPanel({ theme = "dark", showCloseButton = false, onC
                 <X className="w-4 h-4" />
               </button>
             </div>
-            <div className="flex-grow w-full bg-transparent overflow-hidden overscroll-contain rounded-b-[24px]">
-              <CalEmbed theme={theme} />
+            <div
+              data-lenis-prevent="true"
+              className="relative z-0 flex-grow min-h-0 w-full bg-transparent overflow-y-auto overscroll-contain rounded-b-[24px] touch-pan-y"
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+            >
+              <CalEmbed theme={theme} namespace="chat-discovery" />
             </div>
           </motion.div>
         )}

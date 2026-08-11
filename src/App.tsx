@@ -913,7 +913,7 @@ export default function App() {
 
                   {/* Embedded Cal Frame */}
                   <div className="w-full flex-grow rounded-2xl overflow-hidden border border-white/10 bg-slate-950/30 backdrop-blur-sm min-h-[600px] shadow-inner flex flex-col mt-4">
-                    <CalEmbed theme={theme} />
+                    <CalEmbed theme={theme} namespace="contact-discovery" />
                   </div>
                 </div>
               </div>
