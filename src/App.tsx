@@ -508,7 +508,7 @@ export default function App() {
                 )}
 
                 {/* Main Headline card */}
-                <GlassCard className="max-w-3xl p-8 md:p-14 text-center rounded-[28px] relative overflow-hidden" hoverEffect={false}>
+                <GlassCard className="hero-heading-card max-w-3xl p-8 md:p-14 text-center rounded-[28px] relative overflow-hidden" hoverEffect={false}>
                   {/* Subtle layout pulse bg inside card */}
                   <div className="absolute inset-0 bg-gradient-to-br from-aurora-teal/5 via-transparent to-transparent opacity-30 pointer-events-none" />
 

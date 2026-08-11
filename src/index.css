@@ -118,11 +118,10 @@ select:-webkit-autofill:focus {
   }
 }
 
-/* Custom Glassmorphism Primitives for Tailwind v4 */
-@utility glass-panel {
-  /* Keep a translucent fallback visible when backdrop-filter is unavailable. */
-  background-color: rgba(15, 23, 42, 0.72);
-  background: var(--glass-bg);
+/* Conventional CSS glass surfaces. These mirror the footer's proven
+   bg-slate-950/40 + backdrop-blur-md styling without custom utilities. */
+.glass-panel {
+  background: rgba(2, 6, 23, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
@@ -130,9 +129,8 @@ select:-webkit-autofill:focus {
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-@utility glass-surface {
-  background-color: rgba(15, 23, 42, 0.72);
-  background: var(--glass-bg);
+.glass-surface {
+  background: rgba(2, 6, 23, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
@@ -140,11 +138,9 @@ select:-webkit-autofill:focus {
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-@utility glass-panel-hover {
-  &:hover {
-    border-color: var(--glow-hover);
-    box-shadow: 0 12px 36px var(--glow-hover-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  }
+.glass-panel-hover:hover {
+  border-color: var(--glow-hover);
+  box-shadow: 0 12px 36px var(--glow-hover-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Stop scroll chaining from the Cal.com embed: when the iframe content is
@@ -157,13 +153,51 @@ select:-webkit-autofill:focus {
   max-width: 100%;
 }
 
-@utility glass-nav {
-  background-color: rgba(5, 8, 16, 0.82);
-  background: var(--glass-nav);
+.glass-nav {
+  background: rgba(5, 8, 16, 0.82);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--glass-nav-border);
   transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* The chat panel is intentionally more opaque for text contrast. */
+.chat-glass {
+  background: rgba(2, 6, 23, 0.68);
+}
+
+:root.light .glass-panel,
+:root.light .glass-surface {
+  background: rgba(255, 255, 255, 0.65) !important;
+}
+
+:root.light .glass-nav {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-bottom-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+:root.light .chat-glass {
+  background: rgba(255, 255, 255, 0.86) !important;
+}
+
+/* Explicit hero treatment prevents dark utility styles from leaking into
+   the light theme through the animated heading card. */
+:root.light .hero-heading-card {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+:root.light .hero-heading-card h1 {
+  color: var(--card-title) !important;
+}
+
+:root.light .hero-heading-card h3.text-aurora-teal {
+  color: var(--aurora-teal-color) !important;
+}
+
+:root.light .hero-heading-card p {
+  color: var(--text-main) !important;
 }
 
 /* Browsers without backdrop-filter still get a readable glass surface. */
