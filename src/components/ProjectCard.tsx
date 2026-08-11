@@ -17,7 +17,7 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
     <motion.div
       layoutId={`project-container-${project.id}`}
       onClick={onClick}
-      className="glass-panel group rounded-[24px] overflow-hidden cursor-pointer transition-all duration-300 hover:border-aurora-teal/30 hover:shadow-[0_0_30px_rgba(0,255,209,0.15)] hover-sweep flex flex-col h-full"
+      className="glass-panel project-card-glass group rounded-[24px] overflow-hidden cursor-pointer transition-all duration-300 hover:border-aurora-teal/30 hover:shadow-[0_0_30px_rgba(0,255,209,0.15)] hover-sweep flex flex-col h-full"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
